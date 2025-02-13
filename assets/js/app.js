@@ -9,13 +9,13 @@ let winningMessage = '';
 const gameArea = document.createElement('div');
 gameArea.id = 'game-area';
 	const headerOne = document.createElement('h1');
-	headerOne.innerText = 'Javascript AI Rock Paper Scissors';
+	headerOne.innerText = '剪刀石头布';
 	gameArea.append(headerOne);
 
 	const scoreBoard = document.createElement('div');
 	scoreBoard.id = 'score-board';
 		const scoreBoardPlayerP = document.createElement('p');
-		scoreBoardPlayerP.innerText = 'Player';
+		scoreBoardPlayerP.innerText = '你';
 		scoreBoard.append(scoreBoardPlayerP);
 
 		const playerScore = document.createElement('span');
@@ -25,7 +25,7 @@ gameArea.id = 'game-area';
 		scoreBoardPlayerP.append(playerScore);
 
 		const scoreBoardAiP = document.createElement('p');
-		scoreBoardAiP.innerText = 'Computer';
+		scoreBoardAiP.innerText = '电脑';
 		scoreBoard.append(scoreBoardAiP);
 
 		const aiScore = document.createElement('span');
@@ -40,7 +40,7 @@ gameArea.id = 'game-area';
 	playerBtnArea.className = 'btn-area';
 		const playerBtnAreaHeader = document.createElement('span');
 		playerBtnAreaHeader.className = 'btn-header';
-		playerBtnAreaHeader.innerText = 'Player';
+		playerBtnAreaHeader.innerText = '你';
 		playerBtnArea.append(playerBtnAreaHeader);
 
 		const rockButton = document.createElement('button');
@@ -76,7 +76,7 @@ gameArea.id = 'game-area';
 	aiBtnArea.className = 'btn-area';
 		const aiBtnAreaHeader = document.createElement('span');
 		aiBtnAreaHeader.className = 'btn-header';
-		aiBtnAreaHeader.innerText = 'Computer';
+		aiBtnAreaHeader.innerText = '电脑';
 		aiBtnArea.append(aiBtnAreaHeader);
 
 		const airockButton = document.createElement('button');
@@ -170,19 +170,19 @@ function checkWin(){
 		(playerChoice === 3 && aiChoice === 2) ||
 		(playerChoice === 2 && aiChoice === 1)
 	){
-		winningMessage = 'You win';
+		winningMessage = '你赢了';
 		scorePlayer++;
 		playerBtnArea.getElementsByClassName('btn-active')[0].className = 'btn-win';
 		aiBtnArea.getElementsByClassName('btn-active')[0].className = 'btn-lose';
 	}
 	else{
-		winningMessage = 'Computer wins';
+		winningMessage = '电脑赢了';
 		scoreAI++;
 		aiBtnArea.getElementsByClassName('btn-active')[0].className = 'btn-win';
 		playerBtnArea.getElementsByClassName('btn-active')[0].className = 'btn-lose';
 	}
 
-	notification.innerText = winningMessage;
+	notification.innerText = winningMessage === 'draw' ? '平局' :  winningMessage;
 	playerScore.innerText = scorePlayer;
 	aiScore.innerText = scoreAI;
 
